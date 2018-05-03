@@ -63,11 +63,11 @@ public class Partida {
 				numIntento++;
 			} while (!jugador1.hasGanado(respuesta) && numIntento<dificultad.getNumIntentos());
 			if(jugador1.hasGanado(respuesta)) {
-				System.out.println("Has ganado. Una Tostadora nunca podra vencer a un humano");
+				System.out.println("Ha ganado la Maquina. Preparate para el apocalipsis, Skynet esta aqui");
 				System.out.print("Combinacion Oculta: ");
 				jugador2.getTablero().getCombinacionOculta().dibujar();
 			}else {
-				System.out.println("Has perdido. Eres la desonra de la raza humana");
+				System.out.println("Ha ganado el Humano. Prueba a jugar contra una lavadora, quizas sea mas \"inteligente\"");
 				System.out.print("Combinacion Oculta: ");
 				jugador2.getTablero().getCombinacionOculta().dibujar();
 			}
