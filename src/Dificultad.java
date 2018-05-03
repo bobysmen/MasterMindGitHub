@@ -1,7 +1,7 @@
 
 public enum Dificultad {
 
-	FACIL(4,8,false,10), NORMAL(5,8,false,15), DIFICIL(8,10,true,-1);
+	FACILHUMANO(4,8,false,10), FACILMAQUINA(4,8,false,10), NORMAL(5,8,false,15), DIFICIL(8,10,true,-1);
 	private int casillas;
 	private int numColores;
 	private boolean repeticionColores;
