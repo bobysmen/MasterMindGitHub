@@ -41,7 +41,7 @@ public class Partida {
 				System.out.print("Combinacion Oculta: ");
 				jugador2.getTablero().getCombinacionOculta().dibujar();
 			}else {
-				System.out.println("Has perdido. Eres la desonra de la raza humana");
+				System.out.println("Has perdido. Eres la deshonra de la raza humana");
 				System.out.print("Combinacion Oculta: ");
 				jugador2.getTablero().getCombinacionOculta().dibujar();
 			}
@@ -75,7 +75,7 @@ public class Partida {
 	}
 	
 	public void partidaNormal() {
-		
+		Combinacion combinacionJugada, respuesta, combinacionOculta;
 	}
 	
 	public void partidaDificil() {

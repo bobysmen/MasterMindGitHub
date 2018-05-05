@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Maquina extends Jugador {
@@ -12,21 +11,10 @@ public class Maquina extends Jugador {
 		int posicionFicha=0, opcion=0;
 		String color="";
 		Combinacion c = new Combinacion(dificultad.getCasillas());
-		ArrayList<Integer> repeticion = new ArrayList<Integer>();
 		Random rnd = new Random();
-		boolean flag=false;
 		
 		for(posicionFicha=0;posicionFicha<dificultad.getCasillas();posicionFicha++) {
-			//Evitar repeticion
-			do {
-				opcion = rnd.nextInt((dificultad.getNumColores() - 1) + 1) + 1;
-				flag=false;
-					if (!repeticion.contains(opcion)) {
-						repeticion.add(opcion);
-					} else {
-						flag = true;
-					}
-			} while (flag);
+			opcion = rnd.nextInt((dificultad.getNumColores() - 1) + 1) + 1;
 			
 			switch (opcion) {
 			case 1:

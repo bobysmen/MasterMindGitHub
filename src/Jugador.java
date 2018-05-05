@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public abstract class Jugador {
 
@@ -56,27 +57,58 @@ public abstract class Jugador {
 	public Combinacion algoritmoRespuesta(Combinacion combinacionOtroJugador) {
 		Ficha combinacionOculta[];
 		Ficha combinacionComparar[];
+		HashMap<Integer,Ficha>mapaOculta = new HashMap<Integer,Ficha>();
+		HashMap<Integer,Ficha>mapaComparar = new HashMap<Integer,Ficha>();
+		//Incrementa segun si es roja[0], blanca[1] o negra [2]
+		int contador[] = new int[3];
 		Combinacion respuesta = new Combinacion(dificultad.getCasillas());
+		boolean salir=false;
 		int i,j;
-		boolean fichaPuesta=false;
 		
 		combinacionOculta=tablero.getCombinacionOculta().getCombinacionFicha();
 		combinacionComparar=combinacionOtroJugador.getCombinacionFicha();
-		//Sin repeticion de colores, si hubiera repeticion tengo que a�adir un contador o boolean en las condiciones dentro del for
+		//Relleno los mapas
 		for(i=0;i<combinacionOculta.length;i++) {
-			for(j=0;j<combinacionComparar.length;j++) {
-				if(i==j && combinacionOculta[i].equals(combinacionComparar[j])) {
-					respuesta.addFicha(Colores.ROJO, i);
-					fichaPuesta=true;
-				}else if(combinacionOculta[i].equals(combinacionComparar[j])) {
-					respuesta.addFicha(Colores.BLANCO, i);
-					fichaPuesta=true;
+			mapaOculta.put(i, combinacionOculta[i]);
+		}
+		for(i=0;i<combinacionComparar.length;i++) {
+			mapaComparar.put(i, combinacionComparar[i]);
+		}
+		//Miro los mapas y busco las Rojas
+		for(i=0;i<dificultad.getCasillas();i++) {
+			if(mapaOculta.get(i).equals(mapaComparar.get(i))) {
+				contador[0]++;
+				mapaOculta.remove(i);
+				mapaComparar.remove(i);
+			}
+		}
+		//Miro los mapas y busco las Blancas
+		for(i=0;i<dificultad.getCasillas();i++) {
+			for(j=0;j<dificultad.getCasillas() && !salir;j++) {
+				if(mapaOculta.containsKey(i) && mapaComparar.containsKey(j)) {
+					if(mapaOculta.get(i).equals(mapaComparar.get(j))) {
+						contador[1]++;
+						mapaComparar.remove(j);
+						salir=true;
+					}
 				}
 			}
-			if(!fichaPuesta) {
-				respuesta.addFicha(Colores.NEGRO, i);
-			}
-			fichaPuesta=false;
+			mapaOculta.remove(i);
+			salir=false;
+		}
+		
+		//Las negras las saco por eliminacion
+		contador[2]=dificultad.getCasillas()-(contador[0]+contador[1]);
+		
+		//Combinacion segun contador por color
+		for(i=0;i<contador[0];i++) {
+			respuesta.addFicha(Colores.ROJO, i);
+		}
+		for(i=contador[0];i<contador[0]+contador[1];i++) {
+			respuesta.addFicha(Colores.BLANCO, i);
+		}
+		for(i=contador[0]+contador[1];i<dificultad.getCasillas();i++) {
+			respuesta.addFicha(Colores.NEGRO, i);
 		}
 		
 		return respuesta;
