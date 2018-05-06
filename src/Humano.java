@@ -129,10 +129,6 @@ public class Humano extends Jugador {
 		return respuesta;
 	}
 	
-	//Este metodo a�ade la combinacion a jugada
-	/*public Jugada addJugada() {
-		return new Jugada(addCombinacion());
-	}*/
 
 	public Combinacion addCombinacionOculta() {
 		Combinacion co;

@@ -27,7 +27,6 @@ public class Partida {
 		if(dificultad==Dificultad.FACILHUMANO) {
 			combinacionOculta=jugador2.addCombinacionOculta();
 			jugador2.getTablero().setCombinacionOculta(combinacionOculta);
-			jugador1.getTablero().setCombinacionOcultaContraria(combinacionOculta);
 			do {
 				combinacionJugada = jugador1.addCombinacion();
 				respuesta = jugador2.addRespuesta(combinacionJugada);
@@ -50,7 +49,6 @@ public class Partida {
 			System.out.println("Introduzca una combinacion oculta que la maquina deba adivinar: ");
 			combinacionOculta=jugador2.addCombinacionOculta();
 			jugador2.getTablero().setCombinacionOculta(combinacionOculta);
-			jugador1.getTablero().setCombinacionOcultaContraria(combinacionOculta);
 			do {
 				combinacionJugada = jugador1.addCombinacion();
 				combinacionJugada.dibujar();
@@ -86,8 +84,6 @@ public class Partida {
 		jugador1.getTablero().setCombinacionOculta(combinacionOcultaJ1);
 		combinacionOcultaJ2=jugador2.addCombinacionOculta();
 		jugador2.getTablero().setCombinacionOculta(combinacionOcultaJ2);
-		jugador1.getTablero().setCombinacionOcultaContraria(combinacionOcultaJ2);
-		jugador2.getTablero().setCombinacionOcultaContraria(combinacionOcultaJ1);
 		
 		do {
 			combinacionJugada = jugador1.addCombinacion();
@@ -116,7 +112,7 @@ public class Partida {
 				salir=true;
 			}
 			numIntento++;
-		} while (!salir && numIntento<dificultad.getNumIntentos());
+		} while (!salir && numIntento<2);
 		//En caso de hacer todos los intentos y que no haya ganado nadie. se comprobara el numero de rojas y blancas que hay colocadas en la ultima respuesta
 		if(numIntento==dificultad.getNumIntentos() && !jugador1.hasGanado(respuesta) && !jugador2.hasGanado(respuesta)) {
 			
@@ -153,8 +149,6 @@ public class Partida {
 				jugador1.getTablero().setCombinacionOculta(combinacionOcultaJ1);
 				combinacionOcultaJ2=jugador2.addCombinacionOculta();
 				jugador2.getTablero().setCombinacionOculta(combinacionOcultaJ2);
-				jugador1.getTablero().setCombinacionOcultaContraria(combinacionOcultaJ2);
-				jugador2.getTablero().setCombinacionOcultaContraria(combinacionOcultaJ1);
 				
 				do {
 					combinacionJugada = jugador1.addCombinacion();
@@ -200,7 +194,7 @@ public class Partida {
 	
 	public int contadorRespuesta(Combinacion respuesta1, Combinacion respuesta2) {
 		//Devuelve un int para indicar que si devuelve 1, ganar jugador1. Si devuelve 2, gana jugador2. Si devuelve 0, empate.
-		int respuesta=0;
+		int respuesta=-1;
 		int rojo1=0, blanco1=0, rojo2=0, blanco2=0;
 		int i;
 		

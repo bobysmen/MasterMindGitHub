@@ -7,7 +7,6 @@ public class Maquina extends Jugador {
 		super(dificultad);
 	}
 
-	@Override
 	public Combinacion addCombinacion() {
 		int posicionFicha=0, opcion=0;
 		String color="";
@@ -54,12 +53,6 @@ public class Maquina extends Jugador {
 		return c;
 	}
 
-
-	/*public Jugada addJugada() {
-		return new Jugada(addCombinacion());
-	}*/
-
-	@Override
 	public Combinacion addCombinacionOculta() {
 		Combinacion co;
 		if (dificultad!=Dificultad.DIFICIL) {

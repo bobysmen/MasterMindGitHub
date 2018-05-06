@@ -4,7 +4,6 @@ public class Tablero implements Dibujable {
 
 	private LinkedList <Jugada> jugadas = new LinkedList <Jugada>();
 	private Combinacion combinacionOculta;
-	private Combinacion combinacionOcultaContraria;
 	private Dificultad dificultad;
 	
 	Tablero(Dificultad dificultad){
@@ -28,10 +27,6 @@ public class Tablero implements Dibujable {
 	}
 	
 
-	public void setCombinacionOcultaContraria(Combinacion combinacionOcultaContraria) {
-		this.combinacionOcultaContraria = combinacionOcultaContraria;
-	}
-
 
 	public Combinacion getCombinacionOculta() {
 		return combinacionOculta;
@@ -40,10 +35,6 @@ public class Tablero implements Dibujable {
 
 	public void dibujar() {
 		int i;
-		if (dificultad==Dificultad.FACILHUMANO) {
-			System.out.print("Combinacion Oculta: ");
-			combinacionOcultaContraria.dibujar();
-		}
 		System.out.println("\n-------------------------------------------");
 		for(i=0;i<jugadas.size();i++) {
 			System.out.printf("Jugada %d ", i+1);

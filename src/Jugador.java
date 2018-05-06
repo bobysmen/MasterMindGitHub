@@ -22,7 +22,6 @@ public abstract class Jugador {
 
 	public abstract Combinacion addCombinacion();
 	
-	/*public abstract Jugada addJugada();*/
 	
 	public abstract Combinacion addCombinacionOculta();
 	
