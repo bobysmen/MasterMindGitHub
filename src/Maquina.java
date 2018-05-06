@@ -42,6 +42,12 @@ public class Maquina extends Jugador {
 			case 8:
 				color = Colores.NEGRO;
 				break;
+			case 9:
+				color = Colores.NARANJA;
+				break;
+			case 10:
+				color = Colores.ROSA;
+				break;
 			}
 			c.addFicha(color, posicionFicha);
 		}

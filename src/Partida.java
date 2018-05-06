@@ -145,6 +145,56 @@ public class Partida {
 	
 	public void partidaDificil() {
 		Combinacion combinacionJugada, respuesta, combinacionOcultaJ1, combinacionOcultaJ2;
+		boolean salir=false;
+		
+		//Combinaciones Oculta de los 2 jugadores
+				System.out.println("Empezaremos introduciendo las combinaciones ocultas de las 2 maquinas");
+				combinacionOcultaJ1=jugador1.addCombinacionOculta();
+				jugador1.getTablero().setCombinacionOculta(combinacionOcultaJ1);
+				combinacionOcultaJ2=jugador2.addCombinacionOculta();
+				jugador2.getTablero().setCombinacionOculta(combinacionOcultaJ2);
+				jugador1.getTablero().setCombinacionOcultaContraria(combinacionOcultaJ2);
+				jugador2.getTablero().setCombinacionOcultaContraria(combinacionOcultaJ1);
+				
+				do {
+					combinacionJugada = jugador1.addCombinacion();
+					respuesta = jugador2.addRespuesta(combinacionJugada);
+					jugador1.getTablero().addColectionJugada(jugador1.getJugada(combinacionJugada, respuesta));
+					System.out.println("Jugador Maquina1");
+					jugador1.getTablero().dibujar();
+					try {
+						   Thread.sleep(5000); 
+						} catch (Exception e) {
+						   e.printStackTrace();
+						}
+					
+					if (!jugador1.hasGanado(respuesta)) {
+						combinacionJugada = jugador2.addCombinacion();
+						respuesta = jugador1.addRespuesta(combinacionJugada);
+						jugador2.getTablero().addColectionJugada(jugador2.getJugada(combinacionJugada, respuesta));
+						System.out.println("Jugador Maquina2");
+						jugador2.getTablero().dibujar();
+						try {
+							   Thread.sleep(5000); 
+							} catch (Exception e) {
+							   e.printStackTrace();
+							}
+						if(jugador2.hasGanado(respuesta)) {
+							salir=true;
+						}
+					}else {
+						salir=true;
+					}
+				} while (!salir);
+				if(jugador1.hasGanado(respuesta)) {
+					System.out.println("El ganador es la Maquina1");
+					System.out.print("La combinacion oculta de la Maquina2: ");
+					jugador2.getTablero().getCombinacionOculta().dibujar();
+				}else if(jugador2.hasGanado(respuesta)) {
+					System.out.println("El gandor es la Maquina2");
+					System.out.print("La combinacion oculta de la Maquina1: ");
+					jugador1.getTablero().getCombinacionOculta().dibujar();
+				}
 		
 	}
 	

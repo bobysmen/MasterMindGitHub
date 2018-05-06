@@ -13,5 +13,7 @@ public class Colores {
 	public static final String MORADO = "\u001B[35m"  + CIRCULO + RESET;
 	public static final String CELESTE = "\u001B[36m"  + CIRCULO + RESET;
 	public static final String BLANCO = "\u001B[37m"  + CIRCULO + RESET;
+	public static final String NARANJA = "\u001B[38;5;208m" + CIRCULO + RESET;
+	public static final String ROSA = "\u001B[38;5;213m" + CIRCULO + RESET;
 	
 }
