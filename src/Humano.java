@@ -113,6 +113,7 @@ public class Humano extends Jugador {
 					negroAlgo++;
 				}
 			} 
+			//Comparo si todos tienen los mismos
 			if(rojo==rojoAlgo && blanco==blancoAlgo && negro==negroAlgo) {
 				respuestasCorrectas=true;
 			}else {

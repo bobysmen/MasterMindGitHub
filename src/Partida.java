@@ -112,7 +112,7 @@ public class Partida {
 				salir=true;
 			}
 			numIntento++;
-		} while (!salir && numIntento<2);
+		} while (!salir && numIntento<dificultad.getNumIntentos());
 		//En caso de hacer todos los intentos y que no haya ganado nadie. se comprobara el numero de rojas y blancas que hay colocadas en la ultima respuesta
 		if(numIntento==dificultad.getNumIntentos() && !jugador1.hasGanado(respuesta) && !jugador2.hasGanado(respuesta)) {
 			
@@ -193,7 +193,7 @@ public class Partida {
 	}
 	
 	public int contadorRespuesta(Combinacion respuesta1, Combinacion respuesta2) {
-		//Devuelve un int para indicar que si devuelve 1, ganar jugador1. Si devuelve 2, gana jugador2. Si devuelve 0, empate.
+		//Devuelve un int para indicar que si devuelve 1, gana jugador1. Si devuelve 2, gana jugador2. Si devuelve 0, empate.
 		int respuesta=-1;
 		int rojo1=0, blanco1=0, rojo2=0, blanco2=0;
 		int i;

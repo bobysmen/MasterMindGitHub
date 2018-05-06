@@ -37,7 +37,7 @@ public class Tablero implements Dibujable {
 		int i;
 		System.out.println("\n-------------------------------------------");
 		for(i=0;i<jugadas.size();i++) {
-			System.out.printf("Jugada %d ", i+1);
+			System.out.printf("Jugada %-4d ", i+1);
 			jugadas.get(i).dibujar();
 			System.out.println();
 		}

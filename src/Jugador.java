@@ -28,7 +28,7 @@ public abstract class Jugador {
 	public abstract Combinacion addRespuesta(Combinacion combinacionOtroJugador);
 	
 	
-	
+	//Este metodo devuelve la jugada creada ya pasandole los parametros de combinacion y respuesta
 	public Jugada getJugada(Combinacion combinacionJugada, Combinacion respuesta) {
 		jugada = new Jugada();
 		jugada.setCombinacionJugada(combinacionJugada);
