@@ -144,7 +144,7 @@ public class Humano extends Jugador {
 			flag=false;
 			co = addCombinacion();
 			array = co.getCombinacionFicha();
-			for (i = 0; i < repeticion.size() || flag == true; i++) {
+			for (i = 0; i < dificultad.getCasillas() && flag == false; i++) {
 				if (!repeticion.contains(array[i])) {
 					repeticion.add(array[i]);
 				} else {
@@ -154,6 +154,7 @@ public class Humano extends Jugador {
 			if(flag) {
 				System.out.println("La combinacion oculta tiene algun color repetido. Vuelva a introducirla");
 			}
+			repeticion.clear();
 		} while (flag);
 		
 		return co;

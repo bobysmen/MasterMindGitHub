@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Maquina extends Jugador {
@@ -55,7 +56,27 @@ public class Maquina extends Jugador {
 	@Override
 	public Combinacion addCombinacionOculta() {
 		Combinacion co;
-		co=addCombinacion();
+		if (dificultad!=Dificultad.DIFICIL) {
+			Ficha array[];
+			ArrayList<Ficha> repeticion = new ArrayList<Ficha>();
+			int i;
+			boolean flag = false;
+			do {
+				flag = false;
+				co = addCombinacion();
+				array = co.getCombinacionFicha();
+				for (i = 0; i < dificultad.getCasillas() && flag == false; i++) {
+					if (!repeticion.contains(array[i])) {
+						repeticion.add(array[i]);
+					} else {
+						flag = true;
+					}
+				}
+				repeticion.clear();
+			} while (flag);
+		}else {
+			co=addCombinacion();
+		}
 		return co;
 	}
 	

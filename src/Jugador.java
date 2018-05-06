@@ -45,12 +45,11 @@ public abstract class Jugador {
 				rojo++;
 			}
 		}
-		if(rojo!=4) {
+		if(rojo!=dificultad.getCasillas()) {
 			ganado=false;
 		}
 		return ganado;
 	}
-
 
 
 	//Esto es comun en maquina y humano

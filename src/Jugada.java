@@ -9,6 +9,14 @@ public class Jugada implements Dibujable {
 	public void setCombinacionJugada(Combinacion combinacionJugada) {
 		this.combinacionJugada = combinacionJugada;
 	}
+	
+	
+
+	public Combinacion getRespuesta() {
+		return respuesta;
+	}
+
+
 
 	public void setRespuesta(Combinacion respuesta) {
 		this.respuesta = respuesta;

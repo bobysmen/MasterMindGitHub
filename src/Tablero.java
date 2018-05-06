@@ -12,6 +12,13 @@ public class Tablero implements Dibujable {
 	}
 	
 	
+	
+	public LinkedList<Jugada> getJugadas() {
+		return jugadas;
+	}
+
+
+
 	public void addColectionJugada(Jugada jugada) {
 		jugadas.addLast(jugada);
 	}
@@ -33,7 +40,7 @@ public class Tablero implements Dibujable {
 
 	public void dibujar() {
 		int i;
-		if (dificultad==Dificultad.NORMAL) {
+		if (dificultad==Dificultad.FACILHUMANO) {
 			System.out.print("Combinacion Oculta: ");
 			combinacionOcultaContraria.dibujar();
 		}
